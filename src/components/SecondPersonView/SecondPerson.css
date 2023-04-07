@@ -1,0 +1,11 @@
+.second_person_view {
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 300px;
+    transform: rotate(180deg);
+}

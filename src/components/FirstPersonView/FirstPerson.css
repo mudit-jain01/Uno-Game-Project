@@ -1,0 +1,10 @@
+.first_person_view{
+    position:absolute;
+    top: 64%;
+    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    width: 400px;
+}

@@ -4,18 +4,7 @@ import "./CardStyles.css";
 export default function UnoFrontCard(props) {
   return (
     <React.Fragment>
-      {/* 
-      <div className={props.cardColor + " card"}>
-        <div className="inner">
-          <span className="top">⊘</span>
-          <div className="mark">
-            <span className="skip">⊘</span>
-          </div>
-          <span className="bottom">⊘</span>
-        </div>
-      </div> */}
-
-      <div className={props.cardColor + " card"}>
+      <div className={props.cardColor + " card"} style={props.mystyles}>
         <div className="inner">
           <span className={props.special + " top"}>{props.text}</span>
           <div className="mark">

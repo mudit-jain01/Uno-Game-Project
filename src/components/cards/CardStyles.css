@@ -9,7 +9,6 @@
     display: table;
     box-sizing: border-box;
     padding: 5px;
-    margin: 10px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 100px;
     text-shadow:
@@ -22,7 +21,6 @@
         0 -1px 0 #000000,
         0 1px 0 #000000,
         4px 4px 0 #000000;
-    box-shadow: 0 0 10px #aaaaaa;
     text-align: center;
     position: relative;
 }
