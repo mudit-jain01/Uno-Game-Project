@@ -3,3 +3,32 @@
     width: 100vw;
     height: 100vh;
 }
+
+.card_deck{
+    position: absolute;
+    top: 74%;
+    left: 5%;
+}
+
+.card_stack{
+    position: absolute;
+    top: 40%;
+    left: 46%;
+}
+
+.uno_call{
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+}
+
+.uno_button{
+    font-size: 1.2rem;
+    background-color: #C72A18;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 4rem;
+    width: 6rem;
+    box-shadow:0 0.8rem 0 #9c2013;
+    cursor: pointer;
+}
