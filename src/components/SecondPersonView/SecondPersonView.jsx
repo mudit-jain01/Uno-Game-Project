@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UnoFrontCard from "../cards/UnoFrontCard";
 import "./SecondPerson.css";
 
-const types = ["0", "1", "3", "⊘", "⇄", "9", "3"];
-
 export default function SecondPersonView(props) {
   var leftPixels = 0; // for stack (one over the other effect ) styling
+  const [cardList, setCardList] = useState([]); //for each player's card list
+
+  //initialization of cardLists for 1st time
+  useEffect(() => {
+    setCardList((prev) => props.cardStack);
+  }, []);
+
+  //logic to add a card to the list
+  function addCard({ id, color, text }) {
+    setCardList((prev) => {
+      prev.push({ id: id, text: text, color: color });
+    });
+  }
+
+  //logic to remove a perticular card from list
+  function removeCard({ id }) {
+    setCardList((prev) => {
+      let i = prev.findIndex(id);
+      if (i > -1) {
+        prev.splice(i, 1);
+      }
+      return prev;
+    });
+  }
 
   // function for painting the cards in dynamic manner
-  function normalCards(text) {
+  function normalCards({ id, color, text }) {
     return (
       <UnoFrontCard
-        cardColor="blue"
+        key={id}
+        cardColor={color}
         special={text === "⊘" ? "skip" : text === "⇄" ? "reverse" : ""}
         text={text}
         mystyles={{
@@ -27,7 +50,7 @@ export default function SecondPersonView(props) {
   //main return
   return (
     <div className="second_person_view" style={props.myStyles}>
-      {types.map(normalCards)}
+      {cardList.map(normalCards)}
     </div>
   );
 }
