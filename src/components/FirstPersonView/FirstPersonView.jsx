@@ -4,7 +4,6 @@ import "./FirstPerson.css";
 
 const types = ["0", "1", "3", "⊘", "⇄", "9", "3"];
 
-var topPixels = 200;
 var leftPixels = -500;
 
 function normalCards(text) {
@@ -19,10 +18,6 @@ function normalCards(text) {
       }}
     />
   );
-}
-
-function renderView() {
-  return <div></div>;
 }
 
 export default function FirstPersonView() {
