@@ -4,11 +4,11 @@ import "./CardStyles.css";
 export default function UnoFrontCard(props) {
   return (
     <div
-      className={props.cardColor + " card"}
+      className={props.cardColor + " card " + props.text + " " + props.id}
       style={props.mystyles}
       onClick={props.cardSelect}
     >
-      <div className="inner">
+      <div className="inner" id={props.id}>
         <span className={props.special + " top"}>{props.text}</span>
         <div className="mark">
           <span className={props.special}>{props.text}</span>
