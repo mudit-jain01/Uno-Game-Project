@@ -139,3 +139,17 @@
 .mark .skip{
     font-size: 64px;
 }
+
+/* Uno backside logo */
+.card .unologo {
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card.black .inner{
+    background-color: #000000;
+}

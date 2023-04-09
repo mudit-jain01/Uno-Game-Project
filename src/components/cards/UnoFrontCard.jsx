@@ -7,6 +7,8 @@ export default function UnoFrontCard(props) {
       className={props.cardColor + " card " + props.text + " " + props.id} // className= color of card + card from css + number on card + id of the card
       style={props.mystyles}
       onClick={props.cardSelect} //card onClick function
+      onMouseEnter={props.handleHoverEnter}
+      onMouseLeave={props.handleHoverLeave}
     >
       <div className="inner" id={props.id}>
         <span //top left text view
