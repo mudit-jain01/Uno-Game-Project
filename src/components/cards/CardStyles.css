@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:900);
 
+/* main card div view */
 .card {
     width: 116px;
     height: 178px;
@@ -26,6 +27,7 @@
     cursor: pointer;
 }
 
+/* inner div */
 .card .inner {
     display: table-cell;
     vertical-align: middle;
@@ -33,6 +35,7 @@
     overflow: hidden;
 }
 
+/* card middle text view div */
 .card .mark {
     display: inline-block;
     background: #ffffff;
@@ -42,39 +45,47 @@
     line-height: 1.4;
 }
 
-
+/* card blue color */
 .card.blue {
     color: #0063B3;
 }
 
+/* card  inner blue color */
 .card.blue .inner {
     background: #0063B3;
 }
 
+/* card green color */
 .card.green {
     color: #18A849;
 }
 
+/* card inner green color */
 .card.green .inner {
     background: #18A849;
 }
 
+/* card red color */
 .card.red {
     color: #C72A18;
 }
 
+/* card inner red color */
 .card.red .inner {
     background: #C72A18;
 }
 
+/* card yellow color */
 .card.yellow {
     color: #E6CA1E;
 }
 
+/* card inner yellow color */
 .card.yellow .inner {
     background: #E6CA1E;
 }
 
+/* card top left text view */
 .top{
     position: absolute;
     line-height: 0;
@@ -94,6 +105,7 @@
     left: 0.6rem;
 }
 
+/* card bottom right text view */
 .bottom {
     position: absolute;
     line-height: 0;
@@ -113,11 +125,13 @@
     right: 0.6rem;
 }
 
+/* special style for reverse card. rotate by -45deg */
 .reverse{
     display: inline-block;
     transform: rotate(-45deg);
 }
 
+/* specials font */
 .mark .reverse{
     font-size: 80px;
 }

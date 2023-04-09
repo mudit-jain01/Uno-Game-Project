@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import UnoFrontCard from "../cards/UnoFrontCard";
 import "./FirstPerson.css";
 
-const types = ["0", "1", "3", "⊘", "⇄", "9", "3"];
-
 export default function FirstPersonView(props) {
   var leftPixels = 0; //for card stacking effect
+  var cardList = props.cardStack.stack; // card list for the first player stored from state
 
-  var cardList = props.cardStack.stack;
   //function for dynamic painting of cards
   function normalCards({ id, color, text }) {
     return (
@@ -15,17 +13,27 @@ export default function FirstPersonView(props) {
         key={id}
         id={id}
         cardColor={color}
+        //if card is special type, then change styles
         special={text === "⊘" ? "skip" : text === "⇄" ? "reverse" : ""}
         text={text}
+        // for stacking effects
         mystyles={{
           position: "absolute",
           left: `${(leftPixels += 2.2)}rem`,
         }}
-        cardSelect={props.handleClick}
+        //handle the clicks on individual cards
+        cardSelect={props.handleClick} //handle the clicks on individual cards
       />
     );
   }
 
   //main return
-  return <div className="first_person_view">{cardList.map(normalCards)}</div>;
+  return (
+    <div className="first_person_view">
+      {
+        //map over the cardList to paint the cards dynamically
+        cardList.map(normalCards)
+      }
+    </div>
+  );
 }

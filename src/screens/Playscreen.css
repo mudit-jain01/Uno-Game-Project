@@ -1,27 +1,32 @@
+/* playscreen div main */
 .playscreen_div{
     position: relative;
     width: 100vw;
     height: 100vh;
 }
 
+/* card deck to draw from */
 .card_deck{
     position: absolute;
     top: 74%;
     left: 5%;
 }
 
+/* card stack to display played cards */
 .card_stack{
     position: absolute;
     top: 40%;
     left: 46%;
 }
 
+/* uno button */
 .uno_call{
     position: absolute;
     right: 5%;
     bottom: 10%;
 }
 
+/* button styles */
 .uno_button{
     font-size: 1.2rem;
     background-color: #C72A18;

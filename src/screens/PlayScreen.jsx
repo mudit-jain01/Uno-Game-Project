@@ -5,6 +5,7 @@ import UnoFrontCard from "../components/cards/UnoFrontCard";
 import playerInfo from "../demoPlayers";
 import "./Playscreen.css";
 
+//temp demp players json file for first person view
 const demoPlayer = {
   id: "0",
   name: "Swagnik",
@@ -34,68 +35,67 @@ const demoPlayer = {
 
 export default function PlayScreen() {
   //static player position display screen
-  const [playerStatus, setPlayerStatus] = useState(demoPlayer);
+  const [playerStatus, setPlayerStatus] = useState(demoPlayer); //state for firstperson view cards
   const [cardDeckShow, setCardDeckShow] = useState({
     id: "1",
     color: "green",
     text: "5",
-  });
+  }); //global state for changing card stack top
+  const [uno, setUNO] = useState(false); //state for uno calls by first person
 
+  //function for card click by first person to play
   function onCardClick(event) {
     var el = event.currentTarget; //targets the div to which onclick is attached
-    var tempCard = el.className.split(" ");
+    var tempCard = el.className.split(" "); //extract the classname and build an array
+
+    //change the card deck played
     setCardDeckShow({
       id: parseInt(tempCard[3]),
       color: tempCard[0],
       text: tempCard[2],
     });
+
+    //change or remove the card which is played by the 1st person from the stack
     setPlayerStatus((prev) => ({
       ...prev,
       stack: prev.stack.filter((item) => item.id !== parseInt(tempCard[3])),
     }));
   }
 
+  //function for card draw by 1st person
+  function onDraw() {
+    //new card object build
+    var newCard = {
+      id: playerStatus.stack.length + 1,
+      color: "green",
+      text: "0",
+    };
+
+    //concat the new card to stack
+    setPlayerStatus((prev) => ({
+      ...prev,
+      stack: prev.stack.concat(newCard),
+    }));
+  }
+
   return (
     <div className="playscreen_div">
+      {/* first person player view */}
       <FirstPersonView cardStack={playerStatus} handleClick={onCardClick} />
-      {/* <SecondPersonView
-        cardStack={playerInfo.players[1].stack}
-        myStyles={{
-          position: "absolute",
-          top: "0%",
-          left: "50%",
-        }}
-      />
-      <SecondPersonView
-        cardStack={playerInfo.players[2].stack}
-        myStyles={{
-          position: "absolute",
-          top: "36%",
-          left: "70%",
-        }}
-      />
-      <SecondPersonView
-        cardStack={playerInfo.players[3].stack}
-        myStyles={{
-          position: "absolute",
-          top: "40%",
-          left: "16%",
-        }}
-      /> */}
+
       {/* Card deck for card draw  action*/}
       <div className="card_deck">
-        <UnoFrontCard
-          cardColor="red"
-          cardSelect={() => console.log("deck clicked")}
-        />
+        <UnoFrontCard cardColor="red" cardSelect={onDraw} />
       </div>
+
       {/* Card stack for stack of cards played*/}
       <div className="card_stack">
         <UnoFrontCard cardColor={cardDeckShow.color} text={cardDeckShow.text} />
       </div>
+
       {/* Uno call button */}
       <div className="uno_call">
-        <button className="uno_button" onClick={() => console.log("Uno re bc")}>
+        <button className="uno_button" onClick={() => setUNO(true)}>
           Uno
         </button>
       </div>
