@@ -1,28 +1,19 @@
 import React, { useEffect, useState } from "react";
-import UnoFrontCard from "../cards/UnoFrontCard";
 import "./SecondPerson.css";
-
+import UnoBackCard from "../cards/UnoBackCard";
 export default function SecondPersonView(props) {
   var leftPixels = 0; // for stack (one over the other effect ) styling
   var cardList = props.cardStack.stack; //card list for second person view
 
   // function for painting the cards in dynamic manner
-  function normalCards({ id, color, text }) {
+  function normalCards(id) {
     return (
-      <UnoFrontCard
+      <UnoBackCard
         key={id}
-        id={id}
-        cardColor={color}
-        //if card is special type, then change styles
-        special={text === "⊘" ? "skip" : text === "⇄" ? "reverse" : ""}
-        text={text}
-        // for stacking effects
-        mystyles={{
+        myStyles={{
           position: "absolute",
-          left: `${(leftPixels += 1)}rem`,
+          left: `${(leftPixels += 1.2)}rem`,
         }}
-        //handle the clicks on individual cards
-        cardSelect={props.handleClick} //handle the clicks on individual cards
       />
     );
   }

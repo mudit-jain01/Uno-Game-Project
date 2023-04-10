@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FirstPersonView from "../components/FirstPersonView/FirstPersonView";
 import SecondPersonView from "../components/SecondPersonView/SecondPersonView";
 import UnoFrontCard from "../components/cards/UnoFrontCard";
+import UnoBackCard from "../components/cards/UnoBackCard";
 import playerInfo from "../demoPlayers";
 import "./Playscreen.css";
 
@@ -83,9 +84,25 @@ export default function PlayScreen() {
       {/* first person player view */}
       <FirstPersonView cardStack={playerStatus} handleClick={onCardClick} />
 
+      <SecondPersonView
+        cardStack={playerStatus}
+        myStyles={{ position: "absolute", top: "5%", left: "45%" }}
+      />
+      <SecondPersonView
+        cardStack={playerStatus}
+        myStyles={{ position: "absolute", top: "30%", left: "70%" }}
+      />
+      <SecondPersonView
+        cardStack={playerStatus}
+        myStyles={{ position: "absolute", top: "15%", left: "15%" }}
+      />
+      <SecondPersonView
+        cardStack={playerStatus}
+        myStyles={{ position: "absolute", top: "45%", left: "20%" }}
+      />
       {/* Card deck for card draw  action*/}
       <div className="card_deck">
-        <UnoFrontCard cardColor="red" cardSelect={onDraw} />
+        <UnoBackCard cardColor="red" cardSelect={onDraw} />
       </div>
 
       {/* Card stack for stack of cards played*/}
