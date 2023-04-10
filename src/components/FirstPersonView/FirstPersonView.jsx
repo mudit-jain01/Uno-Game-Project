@@ -1,4 +1,5 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import UnoFrontCard from "../cards/UnoFrontCard";
 import "./FirstPerson.css";
 
@@ -10,7 +11,7 @@ export default function FirstPersonView(props) {
   function normalCards({ id, color, text }) {
     return (
       <UnoFrontCard
-        key={id}
+        key={nanoid()}
         id={id}
         cardColor={color}
         //if card is special type, then change styles
