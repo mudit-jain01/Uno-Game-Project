@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import FirstPersonView from "../components/FirstPersonView/FirstPersonView";
-import SecondPersonView from "../components/SecondPersonView/SecondPersonView";
-import UnoFrontCard from "../components/cards/UnoFrontCard";
-import UnoBackCard from "../components/cards/UnoBackCard";
+import FirstPersonView from "../../components/FirstPersonView/FirstPersonView";
+import SecondPersonView from "../../components/SecondPersonView/SecondPersonView";
+import UnoFrontCard from "../../components/cards/UnoFrontCard";
+import UnoBackCard from "../../components/cards/UnoBackCard";
 // import { playerInfo, cardDetails } from "../demoPlayers";
-import cardDeck from "../utils/PackOfCards";
+import cardDeck from "../../utils/PackOfCards";
 import "./Playscreen.css";
-import playerInfo from "../demoPlayers";
+import playerInfo from "../../demoPlayers";
 import { nanoid } from "nanoid";
 
 //temp demp players json file for first person view
@@ -26,11 +26,7 @@ export default function PlayScreen() {
   //static player position display screen
   const [playerStatus, setPlayerStatus] = useState(playerInfo.players[0]); //state for firstperson view cards
 
-  const [cardDeckShow, setCardDeckShow] = useState({
-    id: nanoid(),
-    color: "green",
-    text: "5",
-  }); //global state for changing card stack top
+  const [cardDeckShow, setCardDeckShow] = useState({}); //global state for changing card stack top
 
   const [uno, setUNO] = useState(false); //state for uno calls by first person
 
@@ -49,6 +45,18 @@ export default function PlayScreen() {
       ...prev,
       stack: temp,
     }));
+  }, []);
+
+  //setup random card stack
+  useEffect(() => {
+    let randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
+    while (randomCard.text == "+4" || randomCard.text == "cc")
+      randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
+    setCardDeckShow({
+      id: nanoid(),
+      color: randomCard.color,
+      text: randomCard.text,
+    });
   }, []);
 
   //function for card click by first person to play
@@ -95,7 +103,6 @@ export default function PlayScreen() {
 
   return (
     <div className="playscreen_div">
-      {/* first person player view */}
       <FirstPersonView cardStack={playerStatus} handleClick={onCardClick} />
       <div className="card_deck">
         <UnoBackCard cardColor="red" cardSelect={onDraw} />

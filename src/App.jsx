@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import UnoFrontCard from "./components/cards/UnoFrontCard";
-import PlayScreen from "./screens/PlayScreen";
+import PlayScreen from "./screens/playground/PlayScreen";
 import anime from "animejs";
 import UnoBackCard from "./components/cards/UnoBackCard";
 function App() {
