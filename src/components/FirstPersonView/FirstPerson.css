@@ -1,11 +1,14 @@
 /* first person view absolute positioning */
 .first_person_view{
-    position:absolute;
+    position: absolute;
     top: 70%;
     left: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
+    height: 210px;
     width: 400px;
+}
+
+.name{
+    position: absolute;
+    bottom:0%;
+    left: 40%
 }

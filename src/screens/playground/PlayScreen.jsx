@@ -12,7 +12,11 @@ import { nanoid } from "nanoid";
 
 export default function PlayScreen() {
   //static player position display screen
-  const [playerStatus, setPlayerStatus] = useState(playerInfo.players[0]); //state for firstperson view cards
+  const [playerStatus1, setPlayerStatus1] = useState(playerInfo.players[0]); //state for firstperson view cards
+  const [playerStatus2, setPlayerStatus2] = useState(playerInfo.players[1]);
+  const [playerStatus3, setPlayerStatus3] = useState(playerInfo.players[2]);
+  const [playerStatus4, setPlayerStatus4] = useState(playerInfo.players[3]);
+  const [playerStatus5, setPlayerStatus5] = useState(playerInfo.players[4]);
 
   const [cardDeckShow, setCardDeckShow] = useState({}); //global state for changing card stack top
 
@@ -35,7 +39,7 @@ export default function PlayScreen() {
         text: randomCard.text,
       });
     }
-    setPlayerStatus((prev) => ({
+    setPlayerStatus1((prev) => ({
       ...prev,
       stack: temp,
     }));
@@ -64,7 +68,7 @@ export default function PlayScreen() {
     if (tempCard[2] === "⇄") setOrder((prev) => !prev); //reverse the turn order
 
     //change or remove the card which is played by the 1st person from the stack
-    setPlayerStatus((prev) => ({
+    setPlayerStatus1((prev) => ({
       ...prev,
       stack: prev.stack.filter((item) => item.id !== tempCard[3]),
     }));
@@ -112,7 +116,7 @@ export default function PlayScreen() {
     };
 
     //concat the new card to stack
-    setPlayerStatus((prev) => ({
+    setPlayerStatus1((prev) => ({
       ...prev,
       stack: prev.stack.concat(newCard),
     }));
@@ -124,7 +128,55 @@ export default function PlayScreen() {
   return (
     <div className="playscreen_div">
       {wrongCards && <ErrorChecks handleClick={handleErrors} />}
-      <FirstPersonView cardStack={playerStatus} handleClick={onCardClick} />
+      <FirstPersonView
+        name={playerStatus1.name}
+        cardStack={playerStatus1}
+        handleClick={onCardClick}
+      />
+      {playerStatus2 && (
+        <SecondPersonView
+          name={playerStatus2.name}
+          cardStack={playerStatus2}
+          myStyles={{
+            position: "absolute",
+            top: "5%",
+            right: "30%",
+          }}
+        />
+      )}
+      {playerStatus3 && (
+        <SecondPersonView
+          name={playerStatus3.name}
+          cardStack={playerStatus3}
+          myStyles={{
+            position: "absolute",
+            top: "38%",
+            right: "10%",
+          }}
+        />
+      )}
+      {playerStatus4 && (
+        <SecondPersonView
+          name={playerStatus4.name}
+          cardStack={playerStatus4}
+          myStyles={{
+            position: "absolute",
+            top: "40%",
+            left: "10%",
+          }}
+        />
+      )}
+      {playerStatus5 && (
+        <SecondPersonView
+          name={playerStatus5.name}
+          cardStack={playerStatus5}
+          myStyles={{
+            position: "absolute",
+            top: "5%",
+            left: "20%",
+          }}
+        />
+      )}
       <div className="card_deck">
         <UnoBackCard cardColor="red" cardSelect={onDraw} />
       </div>

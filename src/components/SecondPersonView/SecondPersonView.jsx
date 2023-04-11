@@ -21,10 +21,13 @@ export default function SecondPersonView(props) {
   //main return
   return (
     <div className="second_person_view" style={props.myStyles}>
-      {
-        //map over the cardList to paint cards  dynamically
-        cardList.map(normalCards)
-      }
+      <div className="second_person_stack">
+        {
+          //map over the cardList to paint cards  dynamically
+          cardList.map(normalCards)
+        }
+      </div>
+      <p className="name">{props.name}</p>
     </div>
   );
 }

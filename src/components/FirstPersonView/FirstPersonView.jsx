@@ -31,10 +31,13 @@ export default function FirstPersonView(props) {
   //main return
   return (
     <div className="first_person_view">
-      {
-        //map over the cardList to paint the cards dynamically
-        cardList.map(normalCards)
-      }
+      <div className="first_person_stack">
+        {
+          //map over the cardList to paint the cards dynamically
+          cardList.map(normalCards)
+        }
+      </div>
+      <p className="name">{props.name}</p>
     </div>
   );
 }
