@@ -81,9 +81,10 @@ body {
   overflow: overlay;
   max-height: 100vh;
   background-color: #C3A8CD;
+  font-family: 'Kalam', cursive;
 }
 main{
   width: 100vw;
   height: 100vh;
-  background-color: green;
+  /* background-color: green; */
 }

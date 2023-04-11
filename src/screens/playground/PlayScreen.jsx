@@ -6,21 +6,9 @@ import UnoBackCard from "../../components/cards/UnoBackCard";
 // import { playerInfo, cardDetails } from "../demoPlayers";
 import cardDeck from "../../utils/PackOfCards";
 import "./Playscreen.css";
+import ErrorChecks from "../../components/ErrorDiv/CardError";
 import playerInfo from "../../demoPlayers";
 import { nanoid } from "nanoid";
-
-//temp demp players json file for first person view
-
-const demoF1Player = {
-  id: "0",
-  name: "Swagnik",
-  stack: [],
-};
-const demoF2Players = {
-  id: "0",
-  name: "Swagnik",
-  stack: [],
-};
 
 export default function PlayScreen() {
   //static player position display screen
@@ -29,6 +17,12 @@ export default function PlayScreen() {
   const [cardDeckShow, setCardDeckShow] = useState({}); //global state for changing card stack top
 
   const [uno, setUNO] = useState(false); //state for uno calls by first person
+
+  const [wrongCards, setWrongCards] = useState(false); //state if wrong card is chosen
+
+  const [order, setOrder] = useState(true); //turn state. true means clockwise, false means anticlockwise
+
+  const [turn, setTurn] = useState(0);
 
   useEffect(() => {
     // setup of the game with 7 random numbers for client
@@ -59,6 +53,29 @@ export default function PlayScreen() {
     });
   }, []);
 
+  function setCards(tempCard) {
+    //change the card deck played
+    setCardDeckShow({
+      id: nanoid(),
+      color: tempCard[0],
+      text: tempCard[2],
+    });
+
+    if (tempCard[2] === "⇄") setOrder((prev) => !prev); //reverse the turn order
+
+    //change or remove the card which is played by the 1st person from the stack
+    setPlayerStatus((prev) => ({
+      ...prev,
+      stack: prev.stack.filter((item) => item.id !== tempCard[3]),
+    }));
+
+    //if skiped, move turn pointer by one
+    if (tempCard[2] === "⊘") setTurn((prev) => (prev + 2) % 5);
+    else {
+      setTurn((prev) => (prev + 1) % 5);
+    }
+  }
+
   //function for card click by first person to play
   function onCardClick(event) {
     var el = event.currentTarget; //targets the div to which onclick is attached
@@ -69,19 +86,19 @@ export default function PlayScreen() {
     //tempcard[3]=id
 
     //game logic
-
-    //change the card deck played
-    setCardDeckShow({
-      id: nanoid(),
-      color: tempCard[0],
-      text: tempCard[2],
-    });
-
-    //change or remove the card which is played by the 1st person from the stack
-    setPlayerStatus((prev) => ({
-      ...prev,
-      stack: prev.stack.filter((item) => item.id !== tempCard[3]),
-    }));
+    if (tempCard[2] === cardDeckShow.text) {
+      setCards(tempCard);
+    } else if (tempCard[0] === cardDeckShow.color) {
+      setCards(tempCard);
+    } else if (tempCard[2] === "cc") {
+      setCards(tempCard);
+    } else if (tempCard[2] == "+4") {
+      setCards(tempCard);
+    } else if (cardDeckShow.color === "black") {
+      setCards(tempCard);
+    } else {
+      setWrongCards(true);
+    }
   }
 
   //function for card draw by 1st person
@@ -101,8 +118,12 @@ export default function PlayScreen() {
     }));
   }
 
+  function handleErrors() {
+    setWrongCards(false);
+  }
   return (
     <div className="playscreen_div">
+      {wrongCards && <ErrorChecks handleClick={handleErrors} />}
       <FirstPersonView cardStack={playerStatus} handleClick={onCardClick} />
       <div className="card_deck">
         <UnoBackCard cardColor="red" cardSelect={onDraw} />
