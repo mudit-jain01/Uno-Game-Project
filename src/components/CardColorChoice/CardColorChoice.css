@@ -1,8 +1,8 @@
-.errors {
+.choiceDiv {
     position: absolute;
     top: 35%;
     left: 40%;
-    background-color: red;
+    background-color: #F5C6EC;
     height: 25vh;
     width: 20vw;
     text-align: center;
@@ -11,10 +11,40 @@
     z-index: 2;
 }
 
-button {
-    margin-top: 2rem;
-    background-color: blue;
+.yellowButton{
+    background-color: #E6CA1E;;
+}
+
+.redButton{
+    background-color: #C72A18;
+}
+
+.greenButton{
+    background-color: #18A849;;
+}
+
+.blueButton{
+    background-color: #0063B3;
+}
+
+.choice-button {
+    width: 4rem;
+    height: 2rem;
     border: 0px;
-    border-radius: 0.5rem;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.choices{
+    padding: 1.2rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }

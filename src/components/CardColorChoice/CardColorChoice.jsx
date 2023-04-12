@@ -2,12 +2,18 @@ import React from "react";
 import "./CardColorChoice.css";
 export default function ChooseColor() {
   return (
-    <div className="errors">
+    <div className="choiceDiv">
       <h2>choose color</h2>
-      <button>yellow</button>
-      <button>green</button>
-      <button>blue</button>
-      <button>red</button>
+      <div className="choices">
+        <div className="row">
+          <button className="choice-button redButton">Red</button>
+          <button className="choice-button blueButton">Blue</button>
+        </div>
+        <div className="row">
+          <button className="choice-button greenButton">Green</button>
+          <button className="choice-button yellowButton">Yellow</button>
+        </div>
+      </div>
     </div>
   );
 }

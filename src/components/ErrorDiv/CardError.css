@@ -2,7 +2,7 @@
     position: absolute;
     top: 35%;
     left: 40%;
-    background-color: red;
+    background-color: #F5C6EC;
     height: 25vh;
     width: 20vw;
     text-align: center;
@@ -12,7 +12,6 @@
 }
 
 button{
-    margin-top: 2rem;
     background-color: blue;
     border: 0px;
     border-radius: 0.5rem;
