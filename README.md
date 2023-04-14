@@ -1,5 +1,17 @@
 # UNO-GAME-PROJECT
 
+## LINKS
+- [Description](##Description)
+- [Abstract](##ABSTRACT)
+- [Introduction](##INTRODUCTION)
+- [Abstract](##ABSTRACT)
+- [Literature review](##LITERATURE-REVIEW)
+- [Problem statement](##PROBLEM-STATEMENT)
+- [Requirement analysis](##REQUIREMENT-ANALYSIS)
+- [Implementation](##IMPLEMENTATION)
+- [Standards adopted](##STANDARDS-ADOPTED)
+- [Conclusion](##CONCLUSION-AND-FUTURE-SCOPE)
+
 ## Description
 
 This is a group minor project on ***ONLINE UNO GAME*** submitted to ***KIIT UNIVERSITY*** by:
