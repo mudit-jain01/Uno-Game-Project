@@ -1,15 +1,39 @@
 import React from "react";
 import { nanoid } from "nanoid";
 import UnoFrontCard from "../cards/UnoFrontCard";
+import WildCardColorChange from "../cards/WildCardColorChange";
+import WildCardPlusFour from "../cards/WildCardPlusFour";
 import "./FirstPerson.css";
 
 export default function FirstPersonView(props) {
-  var leftPixels = 0; //for card stacking effect
+  let leftPixels = 0; //for card stacking effect
   var cardList = props.cardStack.stack; // card list for the first player stored from state
 
   //function for dynamic painting of cards
   function normalCards({ id, color, text }) {
-    return (
+    return text === "+4" ? (
+      <WildCardPlusFour
+        text="+4"
+        key={nanoid()}
+        id={id}
+        mystyles={{
+          position: "absolute",
+          left: `${(leftPixels += 2.2)}rem`,
+        }}
+        cardSelect={props.handleClick}
+      />
+    ) : text === "cc" ? (
+      <WildCardColorChange
+        key={nanoid()}
+        id={id}
+        text="cc"
+        mystyles={{
+          position: "absolute",
+          left: `${(leftPixels += 2.2)}rem`,
+        }}
+        cardSelect={props.handleClick}
+      />
+    ) : (
       <UnoFrontCard
         key={nanoid()}
         id={id}

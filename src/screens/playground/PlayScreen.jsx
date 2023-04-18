@@ -3,6 +3,8 @@ import FirstPersonView from "../../components/FirstPersonView/FirstPersonView";
 import SecondPersonView from "../../components/SecondPersonView/SecondPersonView";
 import UnoFrontCard from "../../components/cards/UnoFrontCard";
 import UnoBackCard from "../../components/cards/UnoBackCard";
+import WildCardColorChange from "../../components/cards/WildCardColorChange";
+import WildCardPlusFour from "../../components/cards/WildCardPlusFour";
 // import { playerInfo, cardDetails } from "../demoPlayers";
 import cardDeck from "../../utils/PackOfCards";
 import "./Playscreen.css";
@@ -180,8 +182,18 @@ export default function PlayScreen() {
       <div className="card_deck">
         <UnoBackCard cardColor="red" cardSelect={onDraw} />
       </div>
+      {/* card show stack */}
       <div className="card_stack">
-        <UnoFrontCard cardColor={cardDeckShow.color} text={cardDeckShow.text} />
+        {cardDeckShow.text === "+4" ? (
+          <WildCardPlusFour />
+        ) : cardDeckShow.text === "cc" ? (
+          <WildCardColorChange />
+        ) : (
+          <UnoFrontCard
+            cardColor={cardDeckShow.color}
+            text={cardDeckShow.text}
+          />
+        )}
       </div>
       <div className="uno_call">
         <button className="uno_button" onClick={() => setUNO(true)}>

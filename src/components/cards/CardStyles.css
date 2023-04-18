@@ -153,3 +153,21 @@
 .card.black .inner{
     background-color: #000000;
 }
+
+.card .vector_art_plus_four{
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3rem 0 3rem 0;
+}
+
+.card .vector_art_color_change {
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5rem 1rem 5rem 1rem;
+}

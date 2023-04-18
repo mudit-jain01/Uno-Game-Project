@@ -5,6 +5,8 @@ import ChooseColor from "./components/CardColorChoice/CardColorChoice";
 import Roomselect from "./screens/room-select/roomselect";
 import Lobby from "./screens/lobby/lobby";
 import anime from "animejs";
+import WildCardPlusFour from "./components/cards/WildCardPlusFour";
+import WildCardColorChange from "./components/cards/WildCardColorChange";
 function App() {
   // function animate1(event) {
   //   anime({
