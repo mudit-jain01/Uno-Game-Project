@@ -4,7 +4,13 @@ import "./CardStyles.css";
 export default function WildCardPlusFour(props) {
   return (
     <div
-      className={"black card " + props.text + " " + props.id}
+      className={
+        (props.color ? props.color : "black") +
+        " card " +
+        props.text +
+        " " +
+        props.id
+      }
       style={props.mystyles}
       onClick={props.cardSelect}
     >

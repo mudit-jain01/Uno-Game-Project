@@ -5,6 +5,7 @@ import UnoFrontCard from "../../components/cards/UnoFrontCard";
 import UnoBackCard from "../../components/cards/UnoBackCard";
 import WildCardColorChange from "../../components/cards/WildCardColorChange";
 import WildCardPlusFour from "../../components/cards/WildCardPlusFour";
+import ChooseColor from "../../components/CardColorChoice/CardColorChoice";
 // import { playerInfo, cardDetails } from "../demoPlayers";
 import cardDeck from "../../utils/PackOfCards";
 import "./Playscreen.css";
@@ -29,6 +30,8 @@ export default function PlayScreen() {
   const [order, setOrder] = useState(true); //turn state. true means clockwise, false means anticlockwise
 
   const [turn, setTurn] = useState(0);
+
+  const [changeColor, setChangeColor] = useState(false);
 
   useEffect(() => {
     // setup of the game with 7 random numbers for client
@@ -61,6 +64,10 @@ export default function PlayScreen() {
 
   function setCards(tempCard) {
     //change the card deck played
+    if (tempCard[0] === "black") {
+      console.log(tempCard);
+      console.log(changeColor);
+    }
     setCardDeckShow({
       id: nanoid(),
       color: tempCard[0],
@@ -97,8 +104,10 @@ export default function PlayScreen() {
     } else if (tempCard[0] === cardDeckShow.color) {
       setCards(tempCard);
     } else if (tempCard[2] === "cc") {
+      setChangeColor(true);
       setCards(tempCard);
     } else if (tempCard[2] == "+4") {
+      setChangeColor(true);
       setCards(tempCard);
     } else if (cardDeckShow.color === "black") {
       setCards(tempCard);
@@ -124,12 +133,26 @@ export default function PlayScreen() {
     }));
   }
 
+  //function to handle wrong card play errors
   function handleErrors() {
     setWrongCards(false);
+  }
+
+  //function to change color of the wild cards
+  function handleColorChange(event) {
+    let tempClass = event.target.className.split(" ")[1]; //extract the class name for color change
+    let newColor = tempClass.substring(0, tempClass.length - 6);
+
+    setCardDeckShow((prev) => ({
+      ...prev,
+      color: newColor,
+    }));
+    setChangeColor(false);
   }
   return (
     <div className="playscreen_div">
       {wrongCards && <ErrorChecks handleClick={handleErrors} />}
+      {changeColor && <ChooseColor handleClick={handleColorChange} />}
       <FirstPersonView
         name={playerStatus1.name}
         cardStack={playerStatus1}
@@ -185,9 +208,9 @@ export default function PlayScreen() {
       {/* card show stack */}
       <div className="card_stack">
         {cardDeckShow.text === "+4" ? (
-          <WildCardPlusFour />
+          <WildCardPlusFour color={cardDeckShow.color} />
         ) : cardDeckShow.text === "cc" ? (
-          <WildCardColorChange />
+          <WildCardColorChange color={cardDeckShow.color} />
         ) : (
           <UnoFrontCard
             cardColor={cardDeckShow.color}
