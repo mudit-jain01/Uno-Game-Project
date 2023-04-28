@@ -1,25 +1,25 @@
 import React from "react";
 import "./lobby.css";
+import PlayerProfile from "../../components/LobbyPlayerProfile/PlayerProfile";
 
 export default function Lobby(props) {
+  function playerDP(playerItem) {
+    return <PlayerProfile key={playerItem.id} name={playerItem.name} />;
+  }
+
   return (
-    <React.Fragment>
-      <div className="lobby-screen" id="244:847">
-        <div className="rectangle-27" />
-        <img className="rectangle-28" src="" alt="img" />
-        <img className="rectangle-30" src="" />
-        <img className="rectangle-31" src="" />
-        <img className="rectangle-32" src="" />
-        <img className="rectangle-33" src="" />
-        <div className="player-1-1">Player 1</div>
-        <div className="player-1-2">Player 1</div>
-        <div className="player-1-3">Player 1</div>
-        <div className="player-1-4">Player 1</div>
-        <div className="player-1-5">Player 1</div>
-        <div className="lobby">Lobby</div>
-        <div className="rectangle-25" />
-        <div className=" public">Public</div>
+    <div className="lobby_screen">
+      <div className="lobby">
+        <h2>Lobby</h2>
+        <h4>code: {props.code}</h4>
+        <div className="profile_row">
+          {props.players.slice(0, 3).map(playerDP)}
+        </div>
+        <div className="profile_row">
+          {props.players.slice(3, 6).map(playerDP)}
+        </div>
+        <button className="play_button">Let's play</button>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

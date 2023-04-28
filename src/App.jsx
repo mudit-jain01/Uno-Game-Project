@@ -1,10 +1,9 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import PlayScreen from "./screens/playground/PlayScreen";
-import ErrorChecks from "./components/ErrorDiv/CardError";
-import ChooseColor from "./components/CardColorChoice/CardColorChoice";
-import Roomselect from "./screens/room-select/roomselect";
+import Roomselect from "./screens/room-select/RoomSelection";
 import Lobby from "./screens/lobby/lobby";
 import anime from "animejs";
+import playerInfo from "./demoPlayers";
 import WildCardPlusFour from "./components/cards/WildCardPlusFour";
 import WildCardColorChange from "./components/cards/WildCardColorChange";
 function App() {
@@ -20,9 +19,18 @@ function App() {
   //     rotateY: [{ value: "0deg", duration: 700 }],
   //   });
   // }
+  const [roomPageEntry, setRoomPageEntry] = useState(true);
+  function handleSelection(event) {
+    setRoomPageEntry(false);
+  }
+
   return (
     <main>
-      <PlayScreen />
+      {/* <Lobby players={playerInfo.players} code={}/> */}
+      <Roomselect
+        entryState={roomPageEntry}
+        handleSelection={handleSelection}
+      />
     </main>
   );
 }
