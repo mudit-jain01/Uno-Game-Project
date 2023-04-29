@@ -18,7 +18,9 @@ export default function Lobby(props) {
         <div className="profile_row">
           {props.players.slice(3, 6).map(playerDP)}
         </div>
-        <button className="play_button">Let's play</button>
+        <button className="play_button" onClick={props.handleGoButton}>
+          Let's play
+        </button>
       </div>
     </div>
   );
