@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlayScreen from "./screens/playground/PlayScreen";
 import Roomselect from "./screens/room-select/RoomSelection";
 import Lobby from "./screens/lobby/lobby";
+import LandingPage from "./screens/landing screen/LandingPage";
 import playerInfo from "./demoPlayers";
 import { nanoid } from "nanoid";
 function App() {
@@ -40,8 +41,8 @@ function App() {
 
   return (
     <main>
-      {/* <Lobby players={playerInfo.players} code={}/> */}
-      {pageNumbers === 0 && (
+      {pageNumbers === 0 && <LandingPage handleGoButton={handleGoButton} />}
+      {pageNumbers === 1 && (
         <Roomselect
           handleSelection={handleSelection}
           getCode={getCode}
@@ -50,14 +51,14 @@ function App() {
           handleChange={handleCodeInputChange}
         />
       )}
-      {pageNumbers === 1 && (
+      {pageNumbers === 2 && (
         <Lobby
           code={code}
           players={playerInfo.players}
           handleGoButton={handleGoButton}
         />
       )}
-      {pageNumbers === 2 && <PlayScreen />}
+      {pageNumbers === 3 && <PlayScreen />}
     </main>
   );
 }

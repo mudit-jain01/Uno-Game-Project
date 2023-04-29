@@ -2,7 +2,7 @@
     position: absolute;
     top: 35%;
     left: 40%;
-    background-color: #F5C6EC;
+    background-color: #A6E3E9;
     height: 25vh;
     width: 20vw;
     text-align: center;
@@ -12,19 +12,19 @@
 }
 
 .yellowButton{
-    background-color: #E6CA1E;;
+    background-color: #ebd85e;;
 }
 
 .redButton{
-    background-color: #C72A18;
+    background-color: #db4f40;
 }
 
 .greenButton{
-    background-color: #18A849;;
+    background-color: #3ace6c;;
 }
 
 .blueButton{
-    background-color: #0063B3;
+    background-color: #459adf;
 }
 
 .choice-button {
