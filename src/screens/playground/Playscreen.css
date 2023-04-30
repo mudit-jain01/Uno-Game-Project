@@ -2,9 +2,9 @@
 .playscreen_div{
     background-color: #71C9CE;
     /* background-image: -webkit-linear-gradient(75deg, #fdef6d 50%, #cf1f30 50%); */
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 /* card deck to draw from */
@@ -38,4 +38,11 @@
     width: 6rem;
     box-shadow:0 0.8rem 0 #9c2013;
     cursor: pointer;
+}
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    filter: brightness(0.5);
 }

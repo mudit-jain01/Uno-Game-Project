@@ -12,6 +12,7 @@ import "./Playscreen.css";
 import ErrorChecks from "../../components/ErrorDiv/CardError";
 import playerInfo from "../../demoPlayers";
 import { nanoid } from "nanoid";
+import videobg from "../../assets/radial_wipe_01.mp4";
 
 export default function PlayScreen() {
   //static player position display screen
@@ -151,6 +152,7 @@ export default function PlayScreen() {
   }
   return (
     <div className="playscreen_div">
+      <video src={videobg} autoPlay loop muted/>
       {wrongCards && <ErrorChecks handleClick={handleErrors} />}
       {changeColor && <ChooseColor handleClick={handleColorChange} />}
       <FirstPersonView

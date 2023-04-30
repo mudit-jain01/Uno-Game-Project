@@ -6,18 +6,6 @@ import LandingPage from "./screens/landing screen/LandingPage";
 import playerInfo from "./demoPlayers";
 import { nanoid } from "nanoid";
 function App() {
-  // function animate1(event) {
-  //   anime({
-  //     targets: event.currentTarget,
-  //     rotateY: [{ value: "180deg", duration: 700 }],
-  //   });
-  // }
-  // function animate2(event) {
-  //   anime({
-  //     targets: event.currentTarget,
-  //     rotateY: [{ value: "0deg", duration: 700 }],
-  //   });
-  // }
   const [pageNumbers, setPageNumber] = useState(0);
   const [getCode, setGetCode] = useState(false);
   const [code, setCode] = useState("");
