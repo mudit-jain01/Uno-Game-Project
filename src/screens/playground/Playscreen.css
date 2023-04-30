@@ -1,6 +1,7 @@
 /* playscreen div main */
 .playscreen_div{
-    background-color: #A6E3E9;
+    background-color: #71C9CE;
+    /* background-image: -webkit-linear-gradient(75deg, #fdef6d 50%, #cf1f30 50%); */
     position: relative;
     width: 100vw;
     height: 100vh;
